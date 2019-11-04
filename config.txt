@@ -1,0 +1,56 @@
+sudo apt-get update
+sudo apt-get remove docker docker-engine docker.io
+sudo apt install docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+docker --version
+
+
+sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+
+curl -s https:// mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add -
+
+cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb http://mirrors.ustc.edu.cn/kubernetes/apt kubernetes-xenial main
+EOF
+
+sudo apt-get install software-properties-common
+
+sudo swapoff -a
+
+sudo apt-get install -y kubelet kubeadm kubectl
+
+kubeadm version
+
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=NumCPU
+
+sudo usermod -a -G docker $USER
+logout
+docker pull mirrorgooglecontainers/kube-apiserver-amd64:v1.16.1
+docker pull mirrorgooglecontainers/kube-controller-manager-amd64:v1.16.1
+docker pull mirrorgooglecontainers/kube-scheduler-amd64:v1.16.1
+docker pull mirrorgooglecontainers/kube-proxy-amd64:v1.16.1
+docker pull mirrorgooglecontainers/pause:3.1
+docker pull mirrorgooglecontainers/etcd-amd64:3.3.15-0
+docker pull coredns/coredns:1.6.2
+
+docker tag docker.io/mirrorgooglecontainers/kube-apiserver-amd64:v1.16.1 k8s.gcr.io/kube-apiserver:v1.16.1
+docker tag docker.io/mirrorgooglecontainers/kube-controller-manager-amd64:v1.16.1 k8s.gcr.io/kube-controller-manager:v1.16.1
+docker tag docker.io/mirrorgooglecontainers/kube-scheduler-amd64:v1.16.1 k8s.gcr.io/kube-scheduler:v1.16.1
+docker tag docker.io/mirrorgooglecontainers/kube-proxy-amd64:v1.16.1 k8s.gcr.io/kube-proxy:v1.16.1
+docker tag docker.io/mirrorgooglecontainers/pause:3.1  k8s.gcr.io/pause:3.1
+docker tag docker.io/mirrorgooglecontainers/etcd-amd64:3.3.15-0  k8s.gcr.io/etcd:3.3.15-0
+docker tag docker.io/coredns/coredns:1.6.2  k8s.gcr.io/coredns:1.6.2
+
+
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+https://pastebin.com/raw/YBMiCSbD
+
+kubectl get pods --all-namespaces
+
+kubectl get nodes
