@@ -1,0 +1,109 @@
+html, body{
+    height: 100%;
+}
+
+header{
+    height: 10%;
+    padding-left: 20px;
+}
+
+#main-display-area{
+    height: 85%;
+    width: 100%;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#parameter-setting{
+    height: 10%;
+    width: 100%;
+    border-bottom: 2px solid black;
+    padding-left: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#generate-graph-btn{
+    margin-top: 20px;
+}
+
+#ouput-area{
+    height: 80%;
+    width: 100%;
+    border-bottom: 2px solid black;
+    padding-left: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#graph-area{
+    padding-left: 0px;
+    padding-right: 0px;
+    border-right: 2px solid black;
+}
+
+/*
+
+#table-wrapper {
+  position:relative;
+}
+
+#table-wrapper table {
+  width:100%;
+}
+
+#table-wrapper table * {
+  background:yellow;
+  color:black;
+}
+
+#table-wrapper table thead th .text {
+  position:absolute;
+  top:-20px;
+  z-index:2;
+  height:20px;
+  width:35%;
+  border:1px solid red;
+}
+
+*/
+
+#detail-area{
+    padding-left: 10px;
+    padding-right: 0px;
+    /*overflow: auto;*/
+}
+
+table th {
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+table td {
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+#animation-control{
+    height: 10%;
+    width: 100%;
+    padding-left: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#control-paly-pause{
+    margin-top: 20px;
+}
+
+#progress-control{
+    margin-top: 35px;
+}
+
+footer{
+    height: 5%;
+    padding-left: 20px;
+}
+

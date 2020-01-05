@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'k8svisapp1/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'k8svisapp1/css/flat-ui.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'k8svisapp1/css/custom.css' %}">
+    <title>K8s-Vis</title>
+    <!-- http://127.0.0.1:8000/k8svisapp1/ -->
+</head>
+<body>
+    <h1>Hello Kubernetes!</h1>
+
+
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'k8svisapp1/js/jquery-3.4.1.js' %}"></script>
+    <!-- bootstrap.bundle.js include Popper, but not jQuery -->
+    <script src="{% static 'k8svisapp1/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'k8svisapp1/js/d3.js' %}"></script>
+    <script> token = "{{ csrf_token }}"; </script>
+    <script src="{% static 'k8svisapp1/js/animation.js' %}"></script>
+</body>
+</html>
